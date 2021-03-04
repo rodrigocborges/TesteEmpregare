@@ -8,9 +8,9 @@ namespace empregare.Repository.Services.Interfaces
 {
     public interface ICandidatoService
     {
-        Task<Candidato> Insert(Candidato candidato);
+        Task<dynamic> Insert(Candidato candidato);
 
-        Task<Candidato> GetByEmail(string email);
-        Task<bool> Login(Candidato candidato);
+        dynamic GetByEmail(string email);
+        bool Login(Candidato candidato);
     }
 }

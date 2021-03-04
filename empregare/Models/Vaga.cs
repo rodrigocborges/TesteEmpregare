@@ -14,7 +14,6 @@ namespace empregare.Models
     }
     public class Vaga
     {
-        [Key]
         public int Id { get; set; }
         public string Empresa { get; set; }
         public string Titulo { get; set; }

@@ -32,7 +32,7 @@ namespace empregare.Controllers
             if (ModelState.IsValid)
             {
                 _candidato.Insert(candidato);
-                return new { status = 200, message = string.Format("Usuário {0} cadastrado com sucesso!", candidato.Nome) };
+                return new { status = 200, message = string.Format("Usuário `{0}` cadastrado com sucesso!", candidato.Nome) };
             }
             else
             {
@@ -42,13 +42,13 @@ namespace empregare.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> LoginPost(Candidato candidato)
+        public IActionResult LoginPost(Candidato candidato)
         {
             try
             {
-                if (!await _candidato.Login(candidato))
+                if (!_candidato.Login(candidato))
                     return View("Logado");
-                Candidato candidatoLogado = await _candidato.GetByEmail(candidato.Email);
+                Candidato candidatoLogado = _candidato.GetByEmail(candidato.Email);
                 ViewData.Model = candidatoLogado;
                 return View("Logado");
             }

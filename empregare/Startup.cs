@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using empregare.Repository;
-using empregare.Repository.Interfaces;
 using empregare.Repository.Services;
 using empregare.Repository.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -36,12 +36,8 @@ namespace empregare
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddScoped<ICandidato, CandidatoRepository>();
-
             services.AddScoped<ICandidatoService, CandidatoService>();
 
-
-            services.AddDbContextPool<AppDbContext>(options => options.UseSqlite("Data Source=App.db"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
